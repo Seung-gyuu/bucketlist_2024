@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>2024 my bucketlist</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+      @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@500&display=swap');
+    *{
+      font-family: 'Bitter', serif;
+    }
+    .bg{
+      background-image: url("/img/bg-grid.png");
+      background-position: center;
+      background-size: cover;
+      margin: auto;
+      width:360px;
+    }
+    .title{
+      background-color: pink;
+      border-radius: 10px;
+      color: white;
+      text-align: center;
+      padding: 4px 14px;
+    }
+    .bucket{
+      width:160px;
+      height:160px;
+      text-align: center;
+      
+      background-position: center;
+      background-size: cover;
+    }
+    .image1{
+      background-image: url("/img/bucket-lightred.png");
+    }
+    .image2{
+      background-image: url("img/bucket-red.png");
+    }
+    .msg {
+      color: black !important;
+      text-shadow: none;
+    }
+
+  </style>
+  <link rel="stylesheet" type="text/css" href="https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/bucketList/sparta-bucketlist.css"/>
+</head>
+  
+
+<body class="bg-t4 center">
+  <h1 class="title">2024 my bucket list</h1>
+  <p class="msg center">If I don't achieve these goals, I'll donate to support abandoned dogs</p>
+  <div class="flex-row wrap">
+    <div class="bucket image1 center" >Continue studying Coding, English and Spanish</div>
+    <div class="bucket image2 center" >Obtain google certificate</div>
+    <div class="bucket image2 center" >Learn to play 3 songs on the piano</div>
+    <div class="bucket image1 center" >Do new exercises regularly</div>
+    <div class="bucket image1 center" >Take good care of my dog's health</div>
+    <div class="bucket image2 center" >Begin investing in stocks</div>
+  </div>
+  <script src="script.js"></script>
+
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", (event) => {
+      const buckets = document.querySelectorAll(".bucket");
+      buckets.forEach((bucket, index) => {
+        const isDone = localStorage.getItem("bucket" + index) === "done";
+        if (isDone) {
+          bucket.classList.add("done");
+        }
+      });
+    });
+
+    const buckets = document.querySelectorAll(".bucket");
+    buckets.forEach((bucket, index) => {
+      bucket.addEventListener("click", function () {
+        bucket.classList.toggle("done");
+        if (bucket.classList.contains("done")) {
+          localStorage.setItem("bucket" + index, "done");
+        } else {
+          localStorage.setItem("bucket" + index, "");
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
